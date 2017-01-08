@@ -2,7 +2,7 @@
 This is empty on purpose! Your code to build the resume will go here.
  */
 
-
+//bio
 var bio = {
   name: "Minwoo Chun",
   role: "Frontend-Web-Developer",
@@ -15,7 +15,7 @@ var bio = {
 	  location: "Repulic of Korea"
 	},
 
-  skills: ["Ruby on Rails", "HTML", "CSS"],
+  skills: ["HTML", "CSS", "Javascript", "Ruby on Rails"],
   display: () => {
   	var Name = HTMLheaderName.replace("%data%", bio.name);
 		var Role = HTMLheaderRole.replace("%data%", bio.role);
@@ -31,8 +31,9 @@ var bio = {
 
 		$('#skills').append(Skill);
 
-		var Contact = function(obj){
-			var contact = '';
+		var Contact = (obj) => {
+			let contact = '';
+
 			for (var key in obj) {
 		    if (obj.hasOwnProperty(key)) {
 		    	let HTMLcontact = `<li class="flex-item"><span class="orange-text">${key}</span><span class="white-text">${obj[key]}</span></li>`;
@@ -47,11 +48,25 @@ var bio = {
   }
 }
 
+//intro
+var intro = {
+	description: "I want to work as a front-end web engineer in US, Canada and the Best is REMOTE. So I'm trying hard. I'm studying everyday! I love front-end.",
+	display: () => {
+		var IntroTitle = HTMLintroTitle.replace("%data%", intro.description);
+		$('#intro').append(HTMLintroStart)
+			.find('.intro-entry').append(IntroTitle);
+	}
+}
 
+//work
+
+//project
+
+//education
 
 
 bio.display();
-
+intro.display();
 
 
 

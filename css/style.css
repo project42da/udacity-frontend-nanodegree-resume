@@ -18,6 +18,7 @@ h6 {
   overflow: auto;
 }
 
+.intro-entry,
 .education-entry,
 .work-entry,
 .project-entry {
@@ -219,3 +220,8 @@ span {
     display: block;
   }
 }
+
+
+
+
+
