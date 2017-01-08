@@ -11,7 +11,7 @@ var bio = {
   contact: {
 	  email: "project42da@naver.com",
 	  mobile: "+82 010-2086-0737",
-	  github: "project42da.github.com",
+	  github: `<a style="display:inline;" href="https://github.com/project42da">github</a>`,
 	  location: "Repulic of Korea"
 	},
 
@@ -23,7 +23,7 @@ var bio = {
 		var Welcome = HTMLwelcomeMsg.replace("%data%", bio.message);
 		var SkillsStart = HTMLskillsStart;
 
-		$('#header').append(Name, Role, Picture, Welcome, SkillsStart);
+		$('#header').prepend(Name, Role);
 
 		var Skill = bio.skills.map((skill) => {
 			return HTMLskills.replace("%data%", skill);
@@ -45,6 +45,8 @@ var bio = {
 		}
 
 		$('#topContacts').append(Contact(bio.contact));
+		$('#footerContacts').append(Contact(bio.contact));
+		$('#header').append(Picture, Welcome, SkillsStart);
   }
 }
 
@@ -61,12 +63,55 @@ var intro = {
 //work
 
 //project
-
+var project = {
+	projects:[
+		{
+			title: "Recipe",
+			date: "2016",
+			url:"#",
+			description: "Can search write your recipe and upload pictures, and  register by facebook. Built on AWS and RoR.",
+			image:"images/197x148.gif"
+		},
+		{
+			title: "Airbnb Copy",
+			date: "2016",
+			url:"#",
+			description: "Can host your house imformations and upload pictures. Also register by facebook and Google+. Built on AWS and RoR.",
+			image:"images/197x148.gif"
+		},
+		{
+			title: "Instagram Copy",
+			date: "2016",
+			url:"#",
+			description: "Copy instagram UI. Can upload pictures and register by facebook. Built on c9 and RoR.",
+			image:"images/197x148.gif"
+		},
+		{
+			title: "Resume",
+			date: "2016",
+			url:"#",
+			description: "Copy instagram UI. Built on c9 and RoR.",
+			image:"images/197x148.gif"
+		}
+	],
+	display: function() {
+    for (var e in project.projects) {
+      $("#projects").append(HTMLprojectStart);
+      var formattedTitle = HTMLprojectTitle.replace("%data%", project.projects[e].title);
+      formattedTitle = formattedTitle.replace("%url%", project.projects[e].url);
+      var formattedDates = HTMLprojectDates.replace("%data%", project.projects[e].date);
+      var formattedDescription = HTMLprojectDescription.replace("%data%", project.projects[e].description);
+      var formattedImage = HTMLprojectImage.replace("%data%", project.projects[e].image);
+      $(".project-entry:last").append(formattedTitle + formattedDates + formattedDescription + formattedImage);
+    }
+  }
+}
 //education
 
 
 bio.display();
 intro.display();
+project.display();
 
 
 
