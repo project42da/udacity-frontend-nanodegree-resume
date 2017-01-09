@@ -54,6 +54,7 @@ var HTMLschoolLocation = '<div class="location-text">%data%</div>';
 var HTMLschoolMajor = '<em><br>Major: %data%</em>';
 
 var HTMLonlineClasses = '<h3>Online Classes</h3>';
+var HTMLonlineStart = '<div class="online-entry"></div>';
 var HTMLonlineTitle = '<a href="#">%data%';
 var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
@@ -131,14 +132,14 @@ function initializeMap() {
     var locations = ["Seoul"];
 
     // adds the single location property from bio to the locations array
-    locations.push(bio.contact.location);
+    locations.push(bio.contacts.location);
 
     // iterates through school locations and appends each location to
     // the locations array. Note that forEach is used for array iteration
     // as described in the Udacity FEND Style Guide:
     // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
-    education.school.forEach(function(school){
-      locations.push(school.address);
+    education.schools.forEach(function(school){
+      locations.push(school.location);
     });
 
     // iterates through work locations and appends each location to
