@@ -110,13 +110,13 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   -->
 
   <script>
-    if($(".work-entry").length == 0) {
+    if($(".work-entry").length === 0) {
       $("#workExperience").hide();
     }
-    if($(".project-entry").length == 0) {
+    if($(".project-entry").length === 0) {
       $("#projects").hide();
     }
-    if($(".education-entry").length == 0) {
+    if($(".education-entry").length === 0 && $(".online-entry").length === 0) {
       $("#education").hide();
     }
   </script>
