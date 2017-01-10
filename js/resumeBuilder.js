@@ -78,7 +78,7 @@ var work = {
 		var workLocation = HTMLworkLocation.replace("%data%", work.location);
 		var workDescription = HTMLworkDescription.replace("%data%", work.description);
 
-		if(!work.employer.length===0){
+		if(work.employer.length!==0){
 			$('#workExperience').append(HTMLworkStart)
 			.find('.work-entry').append(workEmployer, workTitle, workDates, workLocation, workDescription);
 		}
@@ -157,7 +157,7 @@ var education = {
 	displaySchool:function() {
 		console.log(education.schools.length);
 
-		if(!education.schools.length===0){
+		if(education.schools.length!==0){
 			$('#education').append(HTMLschoolStart);
 			education.schools.map(function(school){
 				var schoolName = HTMLschoolName.replace("%data%", school.name);
@@ -171,7 +171,7 @@ var education = {
 	displayOnline:function() {
 		console.log(education.online.length);
 
-		if(!education.online.length===0){
+		if(education.online.length!==0){
 			$('#education').append(HTMLonlineClasses, HTMLonlineStart);
 			education.online.map(function(online){
 				var onlineTitle = HTMLonlineTitle.replace("%data%", online.title);
