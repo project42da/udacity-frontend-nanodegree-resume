@@ -69,7 +69,7 @@ var work = {
 		{
 			employer: "Likelion",
 			title: "mento",
-			date: "2017",
+			dates: "2017",
 			location: "	212, Teheran-ro, Gangnam-gu, Seoul ",
 			description: "make students bold"
 		}
@@ -79,7 +79,7 @@ var work = {
 		work.jobs.map(function(job){
 			var workEmployer = HTMLworkEmployer.replace("%data%", job.employer);
 			var workTitle = HTMLworkTitle.replace("%data%", job.title);
-			var workDates = HTMLworkDates.replace("%data%", job.date);
+			var workDates = HTMLworkDates.replace("%data%", job.dates);
 			var workLocation = HTMLworkLocation.replace("%data%", job.location);
 			var workDescription = HTMLworkDescription.replace("%data%", job.description);
 
@@ -130,7 +130,10 @@ var projects = {
       var projectTitle = HTMLprojectTitle.replace("%data%", pro.title).replace("%url%", pro.url);
       var projectDates = HTMLprojectDates.replace("%data%", pro.dates);
       var projectDescription = HTMLprojectDescription.replace("%data%", pro.description);
-      var projectImage = HTMLprojectImage.replace("%data%", pro.images[0]);
+      var projectImage = '';
+      pro.images.forEach(function(image){
+      	projectImage += HTMLprojectImage.replace("%data%", image);
+      });
       $(".project-entry").append(projectTitle + projectDates + projectDescription + projectImage);
     });
   }
