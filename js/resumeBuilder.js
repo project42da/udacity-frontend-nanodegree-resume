@@ -59,29 +59,34 @@ var intro = {
 	description: "I want to work as a front-end web engineer in US, Canada and the Best is REMOTE. So I'm trying hard. I'm studying everyday! I love front-end.",
 	display: function() {
 		var IntroTitle = HTMLintroTitle.replace("%data%", intro.description);
-		$('#intro').append(HTMLintroStart)
-			.find('.intro-entry').append(IntroTitle);
+		$('#intro').append(HTMLintroStart).find('.intro-entry').append(IntroTitle);
 	}
 };
 
 //work
 var work = {
-	employer: "Likelion",
-	title: "mento",
-	date: "2017",
-	location: "	212, Teheran-ro, Gangnam-gu, Seoul ",
-	description: "make students bold",
-	display:function(){
-		var workEmployer = HTMLworkEmployer.replace("%data%", work.employer);
-		var workTitle = HTMLworkTitle.replace("%data%", work.title);
-		var workDates = HTMLworkDates.replace("%data%", work.date);
-		var workLocation = HTMLworkLocation.replace("%data%", work.location);
-		var workDescription = HTMLworkDescription.replace("%data%", work.description);
-
-		if(work.employer.length!==0){
-			$('#workExperience').append(HTMLworkStart)
-			.find('.work-entry').append(workEmployer, workTitle, workDates, workLocation, workDescription);
+	jobs:[
+		{
+			employer: "Likelion",
+			title: "mento",
+			date: "2017",
+			location: "	212, Teheran-ro, Gangnam-gu, Seoul ",
+			description: "make students bold"
 		}
+	],
+	display:function(){
+		$('#workExperience').append(HTMLworkStart);
+		work.jobs.map(function(job){
+			var workEmployer = HTMLworkEmployer.replace("%data%", job.employer);
+			var workTitle = HTMLworkTitle.replace("%data%", job.title);
+			var workDates = HTMLworkDates.replace("%data%", job.date);
+			var workLocation = HTMLworkLocation.replace("%data%", job.location);
+			var workDescription = HTMLworkDescription.replace("%data%", job.description);
+
+			if(work.jobs.length!==0){
+				$('#workExperience').find('.work-entry').append(workEmployer, workTitle, workDates, workLocation, workDescription);
+			}	
+		});
 	}
 };
 
@@ -95,28 +100,28 @@ var projects = {
 			dates: "2016",
 			url:"#",
 			description: "Can search write your recipe and upload pictures, and  register by facebook. (Ruby on Rails)",
-			images:"images/recipe.png"
+			images: ["images/recipe.png"]
 		},
 		{
 			title: "Airbnb Copy - closed",
 			dates: "2016",
 			url:"#",
 			description: "Can host your house imformations and upload pictures. Also register by facebook and Google+. (Ruby on Rails)",
-			images:"images/airbnb.png"
+			images:["images/airbnb.png"]
 		},
 		{
 			title: "Instagram Copy - closed",
 			dates: "2016",
 			url:"#",
 			description: "Copy instagram UI. Can upload pictures and register by facebook. (Ruby on Rails)",
-			images:"images/instagram.png"
+			images:["images/instagram.png"]
 		},
 		{
 			title: "Resume",
 			dates: "2016",
 			url:"#",
 			description: "Udacity - Front-End Web Developer Nanodegree.(JS)",
-			images:"images/resume.png"
+			images:["images/resume.png"]
 		}
 	],
 	display: function() {
@@ -125,7 +130,7 @@ var projects = {
       var projectTitle = HTMLprojectTitle.replace("%data%", pro.title).replace("%url%", pro.url);
       var projectDates = HTMLprojectDates.replace("%data%", pro.dates);
       var projectDescription = HTMLprojectDescription.replace("%data%", pro.description);
-      var projectImage = HTMLprojectImage.replace("%data%", pro.images);
+      var projectImage = HTMLprojectImage.replace("%data%", pro.images[0]);
       $(".project-entry").append(projectTitle + projectDates + projectDescription + projectImage);
     });
   }
@@ -139,13 +144,13 @@ var education = {
 			name: "Konkuk University, Seoul Campus",
 			location: "120 Neungdong-ro, Gwangjin-gu, Seoul 05029, Korea",
 			degree:"Absence",
-			major: ["College of Art & Design, Division of Art, Moving Image"],
+			majors: ["College of Art & Design, Division of Art, Moving Image"],
 			dates:"2011.3~",
 			url:"https://konkuk.ac.kr/"
 
 		}
 	],
-	online:[
+	onlineCourses:[
 		{
 			title:"Front-End Web Developer Nanodegree",
 			school:"Udacity",
@@ -154,7 +159,7 @@ var education = {
 		}
 	],
 
-	displaySchool:function() {
+	display:function() {
 		console.log(education.schools.length);
 
 		if(education.schools.length!==0){
@@ -162,18 +167,16 @@ var education = {
 			education.schools.map(function(school){
 				var schoolName = HTMLschoolName.replace("%data%", school.name);
 				var schoolLocation = HTMLschoolLocation.replace("%data%", school.location);
-				var schoolMajor = HTMLschoolMajor.replace("%data%", school.major);
+				var schoolMajor = HTMLschoolMajor.replace("%data%", school.majors);
 				$('#education').find('.education-entry').append(schoolName, schoolLocation, schoolMajor);
 			});
 		}
-	},
 
-	displayOnline:function() {
-		console.log(education.online.length);
+		console.log(education.onlineCourses.length);
 
-		if(education.online.length!==0){
+		if(education.onlineCourses.length!==0){
 			$('#education').append(HTMLonlineClasses, HTMLonlineStart);
-			education.online.map(function(online){
+			education.onlineCourses.map(function(online){
 				var onlineTitle = HTMLonlineTitle.replace("%data%", online.title);
 				var onlineSchool = HTMLonlineSchool.replace("%data%", online.school);
 				var onlineDates = HTMLonlineDates.replace("%data%", online.dates);
@@ -190,8 +193,7 @@ bio.display();
 intro.display();
 work.display();
 projects.display();
-education.displaySchool();
-education.displayOnline();
+education.display();
 
 
 
